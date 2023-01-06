@@ -1,6 +1,6 @@
-# Python Template
+# ML Test Vectors
 
-A template for Python projects.
+Test vectors for ML functions.
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ pip install -r requirements.colab.txt
 An executable is provided in `./bin`. From the root directory run:
 
 ```sh
-./bin/python_template
+./bin/ml_test_vectors
 ```
 
 This will also pass on additional arguments.
@@ -49,9 +49,9 @@ This will also pass on additional arguments.
 Use the exposed `hello` function:
 
 ```py
-import python_template
+import ml_test_vectors
 
-python_template.hello()
+ml_test_vectors.hello()
 ```
 
 ### Notebooks
@@ -69,7 +69,7 @@ The following scripts assume the requirements have been installed. If using poet
 ### Lint
 
 ```sh
-pylint ./python_template
+pylint ./ml_test_vectors
 ```
 
 ### Typecheck
@@ -81,7 +81,7 @@ mypy
 ### Format
 
 ```sh
-black ./python_template
+black ./ml_test_vectors
 ```
 
 ### Generating requirements files

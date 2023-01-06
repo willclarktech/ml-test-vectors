@@ -1,6 +1,6 @@
 import sys
 
-from python_template.lib import hello
+from ml_test_vectors.lib import hello
 
 try:
     hello()
