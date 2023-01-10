@@ -1,3 +1,3 @@
-from ml_test_vectors.lib import hello
+from ml_test_vectors.types import Tensor, TestVector
 
-__all__ = ["hello"]
+__all__ = ["Tensor", "TestVector"]
