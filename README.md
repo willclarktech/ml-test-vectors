@@ -4,13 +4,14 @@ Test vectors for ML functions.
 
 ## Prerequisites
 
-- Python3.11
+- Python3.10
 
 ## Installation
 
 Using poetry:
 
 ```sh
+poetry env use python3.10
 poetry install
 ```
 
