@@ -18,8 +18,7 @@ functions: Dict[str, Any] = {
 }
 
 
-def run(options: Dict[str, Any]) -> None:
-    fn_name = options.get("function") or ""
+def run_function(fn_name: str) -> None:
     fn = functions.get(fn_name)
     if fn is None:
         raise ValueError(f"Function {fn_name or '(none)'} not recognized")
@@ -31,4 +30,13 @@ def run(options: Dict[str, Any]) -> None:
             json.loads(test_vector.to_json()),
             file,
         )
-    print(f"Run! {options} {fn_name} {fn}")
+
+
+def run(options: Dict[str, Any]) -> None:
+    fn_name = options.get("function") or ""
+    if fn_name == "all":
+        for name in functions:
+            run_function(name)
+    else:
+        run_function(fn_name)
+    print(f"Run! {options}")
