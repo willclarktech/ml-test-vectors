@@ -1,3 +1,4 @@
+from functools import reduce
 from typing import Optional
 
 import numpy as np
@@ -6,8 +7,11 @@ from ml_test_vectors.types import Tensor
 
 
 def forward(inp: Tensor) -> Tensor:
-    x = np.array(inp, dtype="float32")
-    return x.flatten()
+    return (
+        [inp]
+        if isinstance(inp, float)
+        else reduce(lambda flattened, t: flattened + forward(t), inp, [])
+    )
 
 
 def backward(inp: Tensor, _output: Optional[Tensor]) -> Tensor:
