@@ -1,0 +1,8 @@
+{
+	"extends": "tsconfig-willclarktech/tsconfig-library.json",
+	"compilerOptions": {
+		"declarationDir": "ts-types/",
+		"outDir": "ts-dist/",
+		"rootDir": "ml_test_vectors/"
+	}
+}

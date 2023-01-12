@@ -1,0 +1,6 @@
+node_modules/
+
+custom-ts-types/
+docs/
+ts-dist/
+ts-types/
