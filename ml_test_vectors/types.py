@@ -7,21 +7,20 @@ import torch
 Tensor = Union[Sequence[float], Sequence["Tensor"]]
 
 StatelessFunction = Callable[[Tensor], Tensor]
+StatelessDerivativeFunction = Callable[[Tensor, Tensor], Tensor]
 TorchStatelessFunction = Callable[[torch.Tensor], torch.Tensor]
 
 
 class TestVector:
     def __init__(
         self,
-        forward_inputs: List[Tensor],
-        forward_outputs: List[Tensor],
-        backward_inputs: List[Tensor],
-        backward_outputs: List[Tensor],
+        inputs: List[Tensor],
+        outputs: List[Tensor],
+        gradients: List[Tensor],
     ) -> None:
-        self.forward_inputs = forward_inputs
-        self.forward_outputs = forward_outputs
-        self.backward_inputs = backward_inputs
-        self.backward_outputs = backward_outputs
+        self.inputs = inputs
+        self.outputs = outputs
+        self.gradients = gradients
 
     def to_json(self) -> str:
         return json.dumps(self, default=lambda o: o.__dict__)
@@ -29,9 +28,11 @@ class TestVector:
 
 def test_vector_from_json(serialized: str) -> TestVector:
     parsed = json.loads(serialized)
-    forward_inputs, forward_outputs, backward_inputs, backward_outputs = itemgetter(
-        "forward_inputs", "forward_outputs", "backward_inputs", "backward_outputs"
+    inputs, outputs, gradients, = itemgetter(
+        "inputs", "outputs", "gradients"
     )(parsed)
     return TestVector(
-        forward_inputs, forward_outputs, backward_inputs, backward_outputs
+        inputs,
+        outputs,
+        gradients,
     )

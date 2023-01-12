@@ -2,7 +2,7 @@ from typing import List
 
 from ml_test_vectors.types import Tensor
 
-default_forward_input_data: List[Tensor] = [
+default_input_data: List[Tensor] = [
     [0.0],
     [-0.1],
     [0.1],

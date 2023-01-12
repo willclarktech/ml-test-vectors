@@ -7,19 +7,16 @@ from ml_test_vectors.utils import detorch
 
 
 def generate_stateless_function_test_vector(
-    forward: TorchStatelessFunction, raw_forward_inputs: List[Tensor]
+    forward: TorchStatelessFunction, raw_inputs: List[Tensor]
 ) -> TestVector:
-    forward_inputs = [
-        torch.tensor(input, requires_grad=True) for input in raw_forward_inputs
-    ]
-    forward_outputs = [forward(input) for input in forward_inputs]
-    # A simple way to generate valid inputs for the backward pass
-    for output in forward_outputs:
+    inputs = [torch.tensor(inp, requires_grad=True) for inp in raw_inputs]
+    outputs = [forward(inp) for inp in inputs]
+    # A simple way to generate gradients
+    for output in outputs:
         output.sum().backward()
-    backward_outputs = [input.grad for input in forward_inputs]
+    gradients = [inp.grad for inp in inputs]
     return TestVector(
-        detorch(forward_inputs),
-        detorch(forward_outputs),
-        detorch(forward_outputs),
-        detorch(backward_outputs),
+        detorch(inputs),
+        detorch(outputs),
+        detorch(gradients),
     )
