@@ -8,9 +8,9 @@ import torch
 from ml_test_vectors.types import Tensor
 
 
-def get_test_vector_file_path(current_file_path: str) -> str:
-    dirname = os.path.dirname(os.path.realpath(current_file_path))
-    return f"{dirname}/test_vector.json"
+def get_test_vector_file_path(sibling_file_path: str) -> str:
+    dirname = os.path.dirname(os.path.realpath(sibling_file_path))
+    return os.path.join(dirname, "test_vector.json")
 
 
 def detorch(tensors: List[torch.Tensor]) -> Tensor:
