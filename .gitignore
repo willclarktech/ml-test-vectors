@@ -64,3 +64,9 @@ dmypy.json
 
 # VSCode
 .vscode/
+
+# Node.js
+node_modules/
+
+# TypeScript
+tsconfig.tsbuildinfo
