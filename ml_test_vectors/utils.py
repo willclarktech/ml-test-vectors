@@ -1,11 +1,25 @@
+import json
 import os
 from functools import partial
+from operator import itemgetter
 from typing import List
 
 import numpy as np
 import torch
 
-from ml_test_vectors.types import Tensor
+from ml_test_vectors.types import Tensor, TestVector
+
+
+def test_vector_from_json(serialized: str) -> TestVector:
+    parsed = json.loads(serialized)
+    inputs, outputs, gradients, = itemgetter(
+        "inputs", "outputs", "gradients"
+    )(parsed)
+    return TestVector(
+        inputs=inputs,
+        outputs=outputs,
+        gradients=gradients,
+    )
 
 
 def get_test_vector_file_path(sibling_file_path: str) -> str:

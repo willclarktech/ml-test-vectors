@@ -16,7 +16,7 @@ def generate_stateless_function_test_vector(
         output.sum().backward()
     gradients = [inp.grad for inp in inputs]
     return TestVector(
-        detorch(inputs),
-        detorch(outputs),
-        detorch(gradients),
+        inputs=detorch(inputs),
+        outputs=detorch(outputs),
+        gradients=detorch(gradients),
     )
