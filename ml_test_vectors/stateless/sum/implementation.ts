@@ -1,12 +1,16 @@
-import type { Scalar, Tensor } from "../../types";
+import type {
+	Scalar,
+	StatelessDerivativeFunction,
+	StatelessFunction,
+	Tensor,
+} from "../../types";
 import { isScalar, onesLike } from "../../utils";
 
-export const forward = (input: Tensor): Scalar => {
+export const forward: StatelessFunction<Tensor, Scalar> = (input) => {
 	if (isScalar(input)) {
 		return input;
 	}
 	return input.reduce<number>((subtotal, n) => subtotal + forward(n), 0);
 };
 
-export const backward = (input: Tensor, output?: Tensor): Tensor =>
-	onesLike(input);
+export const backward: StatelessDerivativeFunction = (input) => onesLike(input);

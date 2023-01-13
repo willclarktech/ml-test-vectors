@@ -13,8 +13,12 @@ export interface TestVector {
 	readonly gradients: readonly Tensor[];
 }
 
-export type StatelessFunction = (input: Tensor) => Tensor;
-export type StatelessDerivativeFunction = (
-	input: Tensor,
-	output?: Tensor,
-) => Tensor;
+export type StatelessFunction<
+	I extends Tensor = Tensor,
+	R extends Tensor = Tensor,
+> = (input: I) => R;
+export type StatelessDerivativeFunction<
+	I extends Tensor = Tensor,
+	O extends Tensor = Tensor,
+	R extends Tensor = Tensor,
+> = (input: I, output?: O) => R;
