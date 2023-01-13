@@ -8,8 +8,8 @@ from ml_test_vectors.types import Tensor
 
 def forward(inp: Tensor) -> Tensor:
     return (
-        [inp]
-        if isinstance(inp, float)
+        inp
+        if isinstance(inp, float) or isinstance(inp[0], float)
         else reduce(lambda flattened, t: flattened + forward(t), inp, [])
     )
 

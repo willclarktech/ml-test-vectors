@@ -3,14 +3,14 @@ from typing import Optional
 
 import numpy as np
 
-from ml_test_vectors.types import Tensor
+from ml_test_vectors.types import Scalar, Tensor
 
 
-def forward(inp: Tensor) -> Tensor:
+def forward(inp: Tensor) -> Scalar:
     return (
         inp
         if isinstance(inp, float)
-        else reduce(lambda subtotal, n: subtotal + forward(n), inp, 0)
+        else reduce(lambda subtotal, m: subtotal + forward(m), inp, 0)
     )
 
 
