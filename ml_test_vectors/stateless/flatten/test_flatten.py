@@ -5,9 +5,9 @@ from ml_test_vectors.utils import get_test_vector_file_path
 test_vector_file_path = get_test_vector_file_path(__file__)
 
 
-def test_forward():
+def test_forward() -> None:
     check_forward(test_vector_file_path, forward)
 
 
-def test_backward():
+def test_backward() -> None:
     check_backward(test_vector_file_path, backward)

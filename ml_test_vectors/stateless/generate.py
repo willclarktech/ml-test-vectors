@@ -2,8 +2,7 @@ from typing import List
 
 import torch
 
-from ml_test_vectors.types import Tensor, TestVector, TorchStatelessFunction
-from ml_test_vectors.utils import detorch
+from ml_test_vectors.core import Tensor, TestVector, TorchStatelessFunction
 
 
 def generate_stateless_function_test_vector(
@@ -16,7 +15,9 @@ def generate_stateless_function_test_vector(
         output.sum().backward()
     gradients = [inp.grad for inp in inputs]
     return TestVector(
-        inputs=detorch(inputs),
-        outputs=detorch(outputs),
-        gradients=detorch(gradients),
+        inputs=[input.tolist() for input in inputs],
+        outputs=[output.tolist() for output in inputs],
+        gradients=[
+            None if gradient is None else gradient.tolist() for gradient in gradients
+        ],
     )

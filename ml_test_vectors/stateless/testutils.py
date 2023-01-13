@@ -1,4 +1,4 @@
-from ml_test_vectors.types import StatelessDerivativeFunction, StatelessFunction
+from ml_test_vectors.core import StatelessDerivativeFunction, StatelessFunction
 from ml_test_vectors.utils import assert_allclose, test_vector_from_json
 
 

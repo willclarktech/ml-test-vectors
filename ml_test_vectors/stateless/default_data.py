@@ -1,6 +1,6 @@
 from typing import List
 
-from ml_test_vectors.types import Tensor
+from ml_test_vectors.core import Tensor
 
 default_input_data: List[Tensor] = [
     [0.0],

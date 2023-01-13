@@ -2,7 +2,7 @@ from typing import Optional
 
 import numpy as np
 
-from ml_test_vectors.types import Tensor
+from ml_test_vectors.core import Tensor
 
 
 def forward(inp: Tensor) -> Tensor:

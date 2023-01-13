@@ -1,9 +1,9 @@
-from typing import Callable, List, Sequence, TypedDict, Union
+from typing import Callable, List, Optional, TypedDict, Union
 
 import torch
 
 Scalar = float
-Tensor = Union[Scalar, Sequence["Tensor"]]
+Tensor = Union[Scalar, List["Tensor"]]
 
 StatelessFunction = Callable[[Tensor], Tensor]
 StatelessDerivativeFunction = Callable[[Tensor, Tensor], Tensor]
@@ -13,4 +13,4 @@ TorchStatelessFunction = Callable[[torch.Tensor], torch.Tensor]
 class TestVector(TypedDict):
     inputs: List[Tensor]
     outputs: List[Tensor]
-    gradients: List[Tensor]
+    gradients: List[Optional[Tensor]]
