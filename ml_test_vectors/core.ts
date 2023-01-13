@@ -1,4 +1,5 @@
 export type Scalar = number;
+export type Vector = readonly Scalar[];
 // TODO: Define more precisely with max dimensions?
 // eg
 // Tensor0 = Scalar
