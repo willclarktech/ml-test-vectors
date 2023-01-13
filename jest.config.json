@@ -1,4 +1,5 @@
 {
 	"preset": "ts-jest",
-	"rootDir": "ml_test_vectors"
+	"rootDir": "ml_test_vectors",
+	"setupFilesAfterEnv": ["./setupJest.ts"]
 }
