@@ -3,7 +3,7 @@ import type {
 	StatelessDerivativeFunction,
 	StatelessFunction,
 	Tensor,
-} from "../../types";
+} from "../../core";
 import { isScalar, onesLike } from "../../utils";
 
 export const forward: StatelessFunction<Tensor, Scalar> = (input) => {

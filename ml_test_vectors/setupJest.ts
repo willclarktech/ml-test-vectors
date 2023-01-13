@@ -2,7 +2,7 @@
 import { expect } from "@jest/globals";
 import type { MatcherFunction } from "expect";
 
-import type { Tensor } from "./types";
+import type { Tensor } from "./core";
 
 const isCloseTo = (a: Tensor, b: Tensor, numDigits: number): boolean => {
 	if (typeof a === "number") {

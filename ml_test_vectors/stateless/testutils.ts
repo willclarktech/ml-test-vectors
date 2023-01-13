@@ -4,7 +4,7 @@ import type {
 	StatelessDerivativeFunction,
 	StatelessFunction,
 	TestVector,
-} from "../types";
+} from "../core";
 
 export const loadTestVector = (filePath: string): TestVector => {
 	const contents = fs.readFileSync(filePath, "utf8");
