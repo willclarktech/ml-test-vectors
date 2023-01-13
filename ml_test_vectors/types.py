@@ -4,7 +4,8 @@ from typing import Callable, List, Sequence, Union
 
 import torch
 
-Tensor = Union[Sequence[float], Sequence["Tensor"]]
+Scalar = float
+Tensor = Union[Scalar, Sequence["Tensor"]]
 
 StatelessFunction = Callable[[Tensor], Tensor]
 StatelessDerivativeFunction = Callable[[Tensor, Tensor], Tensor]
