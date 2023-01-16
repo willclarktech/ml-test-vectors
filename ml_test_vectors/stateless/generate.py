@@ -15,8 +15,8 @@ def generate_stateless_function_test_vector(
         output.sum().backward()
     gradients = [inp.grad for inp in inputs]
     return TestVector(
-        inputs=[input.tolist() for input in inputs],
-        outputs=[output.tolist() for output in inputs],
+        inputs=[inp.tolist() for inp in inputs],
+        outputs=[output.tolist() for output in outputs],
         gradients=[
             None if gradient is None else gradient.tolist() for gradient in gradients
         ],
