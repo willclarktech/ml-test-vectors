@@ -3,6 +3,7 @@ from typing import Callable, List, Optional, TypedDict, Union
 import torch
 
 Scalar = float
+Vector = List[float]
 Tensor = Union[Scalar, List["Tensor"]]
 
 StatelessFunction = Callable[[Tensor], Tensor]
