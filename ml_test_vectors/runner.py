@@ -1,6 +1,7 @@
 import json
 import os
-from typing import Any, Dict
+from types import ModuleType
+from typing import Dict
 
 from ml_test_vectors.stateless import (
     flatten,
@@ -10,7 +11,7 @@ from ml_test_vectors.stateless import (
     tanh,
 )
 
-functions: Dict[str, Any] = {
+functions: Dict[str, ModuleType] = {
     "flatten": flatten,
     "sigmoid": sigmoid,
     "sum": my_sum,
@@ -29,7 +30,7 @@ def run_function(fn_name: str) -> None:
         json.dump(test_vector, file)
 
 
-def run(options: Dict[str, Any]) -> None:
+def run(options: Dict[str, str]) -> None:
     fn_name = options.get("function") or ""
     if fn_name == "all":
         for name in functions:
